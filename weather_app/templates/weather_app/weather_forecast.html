@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'weather_app/style_weather_forecast.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast</h1>
+
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter a city" required>
+            <button id="oo" type="submit" onclick=oo()>Get Forecast</button>
+        </form>
+        {% if forecasts %}
+        <h2>Weather Forecast for {{ city }}</h2>
+        <ul class="forecast-list">
+            {% for forecast in forecasts|slice:":6" %}
+            <li class="forecast-item">
+                <div class="forecast-item-header">
+                    <span class="date-time">{{ forecast.dt_txt }}</span><br>
+                    <span class="temperature">{{ forecast.main.temp }}°C</span>
+                </div>
+                <div class="weather-condition">{{ forecast.weather.0.main }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        {% endif %}
+    </div><br>
+    <h6><a href="/weather">Go Back to Home </a></h6>
+
+    <script>
+ function oo() {
+            document.getElementById("pp").innerHTML = " ";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'weather_app/weather_map.css' %}">
+
+    <style>
+        #windy {
+            width: 80%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Weather Map</h1>
+    <div id="windy"></div>
+    <div id="input">
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="getCoordinates">Get Live Weather Conditions</button>
+    </div>
+    <h6><a href="/weather">Go Back to Home</a></h6>
+
+
+    <script src="{% static 'weather_app/script.js' %}"></script>
+
+</body>
+</html>
